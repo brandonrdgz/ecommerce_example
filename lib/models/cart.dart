@@ -25,3 +25,36 @@ class Cart {
     };
   }
 }
+
+extension MutableCart on Cart {
+  Cart addItem({
+    required String productId,
+    required int quantity,
+  }) {
+    final itemsCopy = List<Item>.from(items);
+    Item item = itemsCopy.singleWhere(
+      (element) => element.productId == productId,
+      orElse: () => Item(productId: productId, quantity: 0),
+    );
+
+    item.quantity += quantity;
+    itemsCopy.removeWhere((element) => element.productId == productId);
+    itemsCopy.add(item);
+
+    return Cart(
+      items: itemsCopy,
+      total: total,
+    );
+  }
+
+  Cart removeItemById(String productId) {
+    final itemsCopy = List<Item>.from(items);
+    
+    itemsCopy.removeWhere((item) => item.productId == productId);
+
+    return Cart(
+      items: itemsCopy,
+      total: total,
+    );
+  }
+}
