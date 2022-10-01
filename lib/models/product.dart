@@ -1,5 +1,5 @@
 class Product {
-  final String id;
+  final int id;
   final String imageUrl;
   final String title;
   final double price;
@@ -15,7 +15,7 @@ class Product {
 
   factory Product.fromMap(Map<String, Object> map) {
     return Product(
-      id: map['id'] as String,
+      id: map['id'] as int,
       imageUrl: map['imageUrl'] as String,
       title: map['title'] as String,
       price: map['price'] as double,

@@ -28,7 +28,7 @@ class Cart {
 
 extension MutableCart on Cart {
   Cart addItem({
-    required String productId,
+    required int productId,
     required int quantity,
   }) {
     final itemsCopy = List<Item>.from(items);

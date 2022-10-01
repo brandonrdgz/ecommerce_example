@@ -1,7 +1,7 @@
 import 'package:ecommerce_example/models/item.dart';
 
 class Order {
-  final String id;
+  final int id;
   final String userId;
   final List<Item> items;
   final status;
@@ -19,7 +19,7 @@ class Order {
 
   factory Order.fromMap(Map<String, Object> map) {
     return Order(
-      id: map['id'] as String,
+      id: map['id'] as int,
       userId: map['userId'] as String,
       items: (map['items'] as List<Map<String, Object>>).map((item) => Item.fromMap(item)).toList(),
       status: map['status'],
